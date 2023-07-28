@@ -1,5 +1,11 @@
+*{
+    background-color: #93b7e0;
+}
+
+
 h1{
     text-align: center;
+    font-size: 40px;
 }
 
 .inside{
@@ -13,10 +19,95 @@ h1{
 .options{
     display: flex;
     gap:20px;
-    background-color: rgb(172, 167, 167);
-    padding: 10px;
+    background-color: #697184;
+    padding: 8px;
     border-radius: 8px;
 }
+
+.colorContain{
+    display:flex;
+    padding: 3px 6px;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #D8CFD0;
+}
+
+.pickcolor{
+    background-color: #D8CFD0;
+    border: 0px;
+}
+
+  input[type='color'] {
+  width: 45px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+input[type='color']::-webkit-color-swatch {
+    border: none;}
+
+    input[type='color']::-webkit-color-swatch-wrapper {
+        padding: 0px;
+      }
+
+#color{
+    width: 70px;
+    background-color: #D8CFD0;
+}
+
+#eraser{
+    width: 70px;
+    background-color: #D8CFD0;
+}
+
+#reset{
+    width: 70px;
+    background-color: #D8CFD0;
+}
+
+.sizeContain{
+    border-radius: 8px;
+    padding: 3px 6px;
+    background-color: #D8CFD0;
+}
+
+#sizeShow{
+    background-color: #D8CFD0;
+}
+
+input[type="range"] {
+    accent-color: #93b7e0;
+  }
+
+button{
+    border-radius: 8px;
+    border-style: solid;
+}
+
+button:hover{
+    background-color: #FFFFFF;
+    color:#050505;
+    border-radius: 8px;
+    box-shadow: 0 2px #898c8d;
+    cursor:grab;
+}
+
+button:active{
+box-shadow: 0 2px rgb(83, 82, 82);
+transform: translateY(1px);
+}
+
+
+
+
+
+
+
+
+
+
 .grid{
     border: 3px;
     border-style: solid;
@@ -35,3 +126,6 @@ h1{
     border-color: grey;
     border-style: ridge;
 }
+
+
+

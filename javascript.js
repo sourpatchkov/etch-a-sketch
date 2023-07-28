@@ -1,30 +1,46 @@
 const DEFAULT_COLOR = '#333333'
-const DEFAULT_MODE = 'color'
 const DEFAULT_SIZE = 16 
+
 const grid = document.querySelector('.grid')
-const reset = document.querySelector('.reset')
+const resetButton = document.getElementById('reset')
+const colorPick = document.querySelector("#colorPick")
+const eraser = document.getElementById('eraser')
+const color = document.getElementById('color')
+
 let currentSize = DEFAULT_SIZE
 let setCurrentColor = DEFAULT_COLOR
-let currentMode = DEFAULT_MODE
 let square = document.querySelector('.square')
+let amountSlider = document.getElementById('sizeSlider')
 
-reset.addEventListener('click', ()=> deleteGrid(grid)
-)
 
-// function deleteGrid(grid){
-//     while(grid.firstChild){
-//         grid.removeChild(grid.firstChild)
-//     }
-// }
+sizeChange(currentSize)
 
 // Color option 
-const colorPick = document.querySelector("#colorPick")
+
 colorPick.addEventListener('input', () => {
     setCurrentColor = colorPick.value;
 })
 
-// size option 
-let amountSlider = document.getElementById('sizeSlider')
+resetButton.addEventListener('click', ()=>{
+    reset()
+    sizeChange(currentSize)})
+
+eraser.addEventListener('click', ()=> {
+    grid.addEventListener('mouseover', function(e){
+        if(e.target.matches('.square.passed'))
+            e.target.style.backgroundColor = '#FFFFFF';
+
+    }
+    )})
+
+   color.addEventListener('click', ()=> {
+        grid.addEventListener('mouseover', function(e){
+            if(e.target.matches('.square'))
+        e.target.style.backgroundColor = setCurrentColor;
+        }
+        )})   
+// size option
+
 amountSlider.oninput = function(){
     currentSize= amountSlider.value;
     sizeShow.innerHTML = this.value
@@ -34,18 +50,34 @@ amountSlider.oninput = function(){
 
 function sizeChange(currentSize){
     let squareWidth = (400/currentSize)-2;
-    console.log(squareWidth);
-    createGrid(currentSize);
+    createGrid(currentSize, squareWidth);
 }
 
-function createGrid(currentSize){
+function createGrid(currentSize, squareWidth){
+    reset()
     let boxAmount = currentSize * currentSize
+    // loops amount of boxes created
     for(let i =0; i<boxAmount; i++){
     const div =document.createElement('div')
+    // creating box and giving elements
     div.classList.add('square')
-    div.style.width= `${currentSize}px`;
-div.style.height=`${currentSize}px`
+    div.style.width= `${squareWidth}px`;
+div.style.height=`${squareWidth}px`;
+div.style.backgroundColor= '#FFFFFF'
+grid.addEventListener('mouseover', function(e){
+    if(e.target.matches('.square')){
+        div.classList.add('passed')
+        e.target.style.backgroundColor = setCurrentColor
+    }
+})
 grid.appendChild(div);
 }}
+
+function reset(){
+    while(grid.firstChild){
+        grid.removeChild(grid.firstChild)
+    }
+}
+
 
 
